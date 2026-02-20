@@ -1,0 +1,40 @@
+{
+  "name": "file-uploader",
+  "displayName": "File Uploader",
+  "description": "Upload files to webpage",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:file-uploader.uploadFiles",
+    "onStartupFinished"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [{
+      "command": "file-uploader.uploadFiles",
+      "title": "Upload to Webpage"
+    }],
+    "menus": {
+      "explorer/context": [{
+        "command": "file-uploader.uploadFiles",
+        "group": "navigation"
+      }]
+    },
+    "configuration": {
+      "title": "File Uploader",
+      "properties": {
+        "fileUploader.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "Your webpage server URL"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./"
+  }
+}
